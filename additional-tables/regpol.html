@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html>
+  <style>
+    body {
+	color: #232323;
+	margin: 10px;
+	padding: 0;
+	text-align: justify;
+	font: normal 13px verdana,arial,'Bitstream Vera Sans',helvetica,sans-serif;
+    }
+
+    .topnav {
+	overflow: hidden;
+	background-color: #333;
+    }
+
+    .topnav a {
+	float: left;
+	display: block;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+    }
+
+    .topnav a:hover {
+	background-color: #ddd;
+	color: black;
+    }
+
+    .topnav a.active {
+	background-color: #04AA6D;
+	color: white;
+    }
+
+    .topnav .icon {
+	display: none;
+    }
+
+    @media screen and (max-width: 600px) {
+	.topnav a:not(:first-child) {display: none;}
+	.topnav a.icon {
+	    float: right;
+	    display: block;
+	}
+    }
+
+    @media screen and (max-width: 600px) {
+	.topnav.responsive {position: relative;}
+	.topnav.responsive .icon {
+	    position: absolute;
+	    right: 0;
+	    top: 0;
+	}
+	.topnav.responsive a {
+	    float: none;
+	    display: block;
+	    text-align: left;
+	}
+    }
+
+    table {
+	font-family: Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 40%;
+    }
+
+    table td, table th {
+	border: 1px solid #ddd;
+	padding: 8px;
+	white-space: nowrap;
+    }
+
+    table tr:nth-child(even){background-color: #f2f2f2;}
+
+    table tr:hover {background-color: #ddd;}
+
+    table th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: center;
+	background-color: #4169e1;
+	color: white;
+    }
+
+    /* The Modal (background) */
+    .modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	padding-top: 100px; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(255,255,255); /* Fallback color */
+	background-color: rgba(255,255,255,0.9); /* Black w/ opacity */
+    }
+
+    /* Modal Content (image) */
+    .modal-content {
+	margin: auto;
+	display: block;
+	width: 80%;
+	max-width: 700px;
+    }
+
+    /* Caption of Modal Image */
+    #caption {
+	margin: auto;
+	display: block;
+	width: 80%;
+	max-width: 700px;
+	text-align: center;
+	color: #4169e1;
+	padding: 10px 0;
+	height: 150px;
+    }
+
+    /* Add Animation */
+    .modal-content, #caption {  
+	-webkit-animation-name: zoom;
+	-webkit-animation-duration: 0.6s;
+	animation-name: zoom;
+	animation-duration: 0.6s;
+    }
+
+    @-webkit-keyframes zoom {
+	from {-webkit-transform:scale(0)} 
+	to {-webkit-transform:scale(1)}
+    }
+
+    @keyframes zoom {
+	from {transform:scale(0)} 
+	to {transform:scale(1)}
+    }
+
+    /* The Close Button */
+    .close {
+	position: absolute;
+	top: 15px;
+	right: 35px;
+	color: #000;
+	font-size: 40px;
+	font-weight: bold;
+	transition: 0.3s;
+    }
+
+    .close:hover,
+    .close:focus {
+	color: #bbb;
+	text-decoration: none;
+	cursor: pointer;
+    }
+
+    /* 100% Image Width on Smaller Screens */
+    @media only screen and (max-width: 700px){
+	.modal-content {
+	    width: 100%;
+	}
+    }
+  </style>
+
+  <body>
+    This page presents the numerical results and visual solutions found for the problems considered in the paper<br><br>
+    E. G. Birgin, J. L. Gardenghi, A. Laurain. "Asymptotic bounds on the optimal radius when covering a set with minimum radius identical balls", <i>submitted</i>.<br><br>
+
+    <!-- The Menu -->
+    <div class="topnav" id="myTopnav">
+      <a href="index.html">Unitary-side triangles and squares</a>
+      <a href="regpol.html">Regular polygons</a>
+      <a href="nonregpol.html">Nonregular polygons</a>
+    </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="img01">
+      <div id="caption"></div>
+    </div>
+    <h2>Triangles</h2>
+    <table>
+      <tr>
+        <th>Number of balls</th>
+        <th>Radius</th>
+        <th>Solution</th>
+        <th colspan=2> Files </th>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td> 2.4997701995076060e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_3_nballs_10.svg', '10 balls')">Image</a></td>
+        <td><a href="files/regpol_3_nballs_10.dat">data file</a></td>
+        <td><a href="files/regpol_3_nballs_10.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>20</td>
+        <td> 1.7878680768922903e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_3_nballs_20.svg', '20 balls')">Image</a></td>
+        <td><a href="files/regpol_3_nballs_20.dat">data file</a></td>
+        <td><a href="files/regpol_3_nballs_20.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>30</td>
+        <td> 1.4008484869823193e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_3_nballs_30.svg', '30 balls')">Image</a></td>
+        <td><a href="files/regpol_3_nballs_30.dat">data file</a></td>
+        <td><a href="files/regpol_3_nballs_30.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>40</td>
+        <td> 1.2068514874998985e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_3_nballs_40.svg', '40 balls')">Image</a></td>
+        <td><a href="files/regpol_3_nballs_40.dat">data file</a></td>
+        <td><a href="files/regpol_3_nballs_40.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>50</td>
+        <td> 1.0709802485963880e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_3_nballs_50.svg', '50 balls')">Image</a></td>
+        <td><a href="files/regpol_3_nballs_50.dat">data file</a></td>
+        <td><a href="files/regpol_3_nballs_50.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>60</td>
+        <td> 9.6987098008903080e-02</td>
+        <td><a href="#" onClick="show_modal('images/regpol_3_nballs_60.svg', '60 balls')">Image</a></td>
+        <td><a href="files/regpol_3_nballs_60.dat">data file</a></td>
+        <td><a href="files/regpol_3_nballs_60.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>70</td>
+        <td> 8.9118383655621372e-02</td>
+        <td><a href="#" onClick="show_modal('images/regpol_3_nballs_70.svg', '70 balls')">Image</a></td>
+        <td><a href="files/regpol_3_nballs_70.dat">data file</a></td>
+        <td><a href="files/regpol_3_nballs_70.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>80</td>
+        <td> 8.2742840493430600e-02</td>
+        <td><a href="#" onClick="show_modal('images/regpol_3_nballs_80.svg', '80 balls')">Image</a></td>
+        <td><a href="files/regpol_3_nballs_80.dat">data file</a></td>
+        <td><a href="files/regpol_3_nballs_80.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>90</td>
+        <td> 7.8189168873025378e-02</td>
+        <td><a href="#" onClick="show_modal('images/regpol_3_nballs_90.svg', '90 balls')">Image</a></td>
+        <td><a href="files/regpol_3_nballs_90.dat">data file</a></td>
+        <td><a href="files/regpol_3_nballs_90.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>100</td>
+        <td> 7.4008843955332526e-02</td>
+        <td><a href="#" onClick="show_modal('images/regpol_3_nballs_100.svg', '100 balls')">Image</a></td>
+        <td><a href="files/regpol_3_nballs_100.dat">data file</a></td>
+        <td><a href="files/regpol_3_nballs_100.mp">metapost</a></td>
+      </tr>
+    </table>
+    <h2>Squares</h2>
+    <table>
+      <tr>
+        <th>Number of balls</th>
+        <th>Radius</th>
+        <th>Solution</th>
+        <th colspan=2> Files </th>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td> 3.0857138444278132e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_4_nballs_10.svg', '10 balls')">Image</a></td>
+        <td><a href="files/regpol_4_nballs_10.dat">data file</a></td>
+        <td><a href="files/regpol_4_nballs_10.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>20</td>
+        <td> 2.1530345690511624e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_4_nballs_20.svg', '20 balls')">Image</a></td>
+        <td><a href="files/regpol_4_nballs_20.dat">data file</a></td>
+        <td><a href="files/regpol_4_nballs_20.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>30</td>
+        <td> 1.7257864265589820e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_4_nballs_30.svg', '30 balls')">Image</a></td>
+        <td><a href="files/regpol_4_nballs_30.dat">data file</a></td>
+        <td><a href="files/regpol_4_nballs_30.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>40</td>
+        <td> 1.4969178407786468e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_4_nballs_40.svg', '40 balls')">Image</a></td>
+        <td><a href="files/regpol_4_nballs_40.dat">data file</a></td>
+        <td><a href="files/regpol_4_nballs_40.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>50</td>
+        <td> 1.3350622446273461e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_4_nballs_50.svg', '50 balls')">Image</a></td>
+        <td><a href="files/regpol_4_nballs_50.dat">data file</a></td>
+        <td><a href="files/regpol_4_nballs_50.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>60</td>
+        <td> 1.1927812547975987e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_4_nballs_60.svg', '60 balls')">Image</a></td>
+        <td><a href="files/regpol_4_nballs_60.dat">data file</a></td>
+        <td><a href="files/regpol_4_nballs_60.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>70</td>
+        <td> 1.1073452412028875e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_4_nballs_70.svg', '70 balls')">Image</a></td>
+        <td><a href="files/regpol_4_nballs_70.dat">data file</a></td>
+        <td><a href="files/regpol_4_nballs_70.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>80</td>
+        <td> 1.0329912595118773e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_4_nballs_80.svg', '80 balls')">Image</a></td>
+        <td><a href="files/regpol_4_nballs_80.dat">data file</a></td>
+        <td><a href="files/regpol_4_nballs_80.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>90</td>
+        <td> 9.6411730891149183e-02</td>
+        <td><a href="#" onClick="show_modal('images/regpol_4_nballs_90.svg', '90 balls')">Image</a></td>
+        <td><a href="files/regpol_4_nballs_90.dat">data file</a></td>
+        <td><a href="files/regpol_4_nballs_90.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>100</td>
+        <td> 9.1836292588113586e-02</td>
+        <td><a href="#" onClick="show_modal('images/regpol_4_nballs_100.svg', '100 balls')">Image</a></td>
+        <td><a href="files/regpol_4_nballs_100.dat">data file</a></td>
+        <td><a href="files/regpol_4_nballs_100.mp">metapost</a></td>
+      </tr>
+    </table>
+    <h2>Pentagons</h2>
+    <table>
+      <tr>
+        <th>Number of balls</th>
+        <th>Radius</th>
+        <th>Solution</th>
+        <th colspan=2> Files </th>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td> 3.4715783423734442e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_5_nballs_10.svg', '10 balls')">Image</a></td>
+        <td><a href="files/regpol_5_nballs_10.dat">data file</a></td>
+        <td><a href="files/regpol_5_nballs_10.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>20</td>
+        <td> 2.3669939900915044e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_5_nballs_20.svg', '20 balls')">Image</a></td>
+        <td><a href="files/regpol_5_nballs_20.dat">data file</a></td>
+        <td><a href="files/regpol_5_nballs_20.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>30</td>
+        <td> 1.8945452383832928e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_5_nballs_30.svg', '30 balls')">Image</a></td>
+        <td><a href="files/regpol_5_nballs_30.dat">data file</a></td>
+        <td><a href="files/regpol_5_nballs_30.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>40</td>
+        <td> 1.6250262564038362e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_5_nballs_40.svg', '40 balls')">Image</a></td>
+        <td><a href="files/regpol_5_nballs_40.dat">data file</a></td>
+        <td><a href="files/regpol_5_nballs_40.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>50</td>
+        <td> 1.4500870015930528e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_5_nballs_50.svg', '50 balls')">Image</a></td>
+        <td><a href="files/regpol_5_nballs_50.dat">data file</a></td>
+        <td><a href="files/regpol_5_nballs_50.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>60</td>
+        <td> 1.3153499487968667e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_5_nballs_60.svg', '60 balls')">Image</a></td>
+        <td><a href="files/regpol_5_nballs_60.dat">data file</a></td>
+        <td><a href="files/regpol_5_nballs_60.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>70</td>
+        <td> 1.2111414316889081e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_5_nballs_70.svg', '70 balls')">Image</a></td>
+        <td><a href="files/regpol_5_nballs_70.dat">data file</a></td>
+        <td><a href="files/regpol_5_nballs_70.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>80</td>
+        <td> 1.1318557920546178e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_5_nballs_80.svg', '80 balls')">Image</a></td>
+        <td><a href="files/regpol_5_nballs_80.dat">data file</a></td>
+        <td><a href="files/regpol_5_nballs_80.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>90</td>
+        <td> 1.0631815787366881e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_5_nballs_90.svg', '90 balls')">Image</a></td>
+        <td><a href="files/regpol_5_nballs_90.dat">data file</a></td>
+        <td><a href="files/regpol_5_nballs_90.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>100</td>
+        <td> 1.0053105212646550e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_5_nballs_100.svg', '100 balls')">Image</a></td>
+        <td><a href="files/regpol_5_nballs_100.dat">data file</a></td>
+        <td><a href="files/regpol_5_nballs_100.mp">metapost</a></td>
+      </tr>
+    </table>
+    <h2>Hexagons</h2>
+    <table>
+      <tr>
+        <th>Number of balls</th>
+        <th>Radius</th>
+        <th>Solution</th>
+        <th colspan=2> Files </th>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td> 3.6038556747695094e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_6_nballs_10.svg', '10 balls')">Image</a></td>
+        <td><a href="files/regpol_6_nballs_10.dat">data file</a></td>
+        <td><a href="files/regpol_6_nballs_10.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>20</td>
+        <td> 2.4292672230255191e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_6_nballs_20.svg', '20 balls')">Image</a></td>
+        <td><a href="files/regpol_6_nballs_20.dat">data file</a></td>
+        <td><a href="files/regpol_6_nballs_20.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>30</td>
+        <td> 1.9601505809206032e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_6_nballs_30.svg', '30 balls')">Image</a></td>
+        <td><a href="files/regpol_6_nballs_30.dat">data file</a></td>
+        <td><a href="files/regpol_6_nballs_30.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>40</td>
+        <td> 1.6839839391765454e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_6_nballs_40.svg', '40 balls')">Image</a></td>
+        <td><a href="files/regpol_6_nballs_40.dat">data file</a></td>
+        <td><a href="files/regpol_6_nballs_40.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>50</td>
+        <td> 1.5016081142684781e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_6_nballs_50.svg', '50 balls')">Image</a></td>
+        <td><a href="files/regpol_6_nballs_50.dat">data file</a></td>
+        <td><a href="files/regpol_6_nballs_50.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>60</td>
+        <td> 1.3642861185641464e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_6_nballs_60.svg', '60 balls')">Image</a></td>
+        <td><a href="files/regpol_6_nballs_60.dat">data file</a></td>
+        <td><a href="files/regpol_6_nballs_60.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>70</td>
+        <td> 1.2473383220573088e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_6_nballs_70.svg', '70 balls')">Image</a></td>
+        <td><a href="files/regpol_6_nballs_70.dat">data file</a></td>
+        <td><a href="files/regpol_6_nballs_70.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>80</td>
+        <td> 1.1636889903930613e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_6_nballs_80.svg', '80 balls')">Image</a></td>
+        <td><a href="files/regpol_6_nballs_80.dat">data file</a></td>
+        <td><a href="files/regpol_6_nballs_80.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>90</td>
+        <td> 1.1009806639758152e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_6_nballs_90.svg', '90 balls')">Image</a></td>
+        <td><a href="files/regpol_6_nballs_90.dat">data file</a></td>
+        <td><a href="files/regpol_6_nballs_90.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>100</td>
+        <td> 1.0422086484453501e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_6_nballs_100.svg', '100 balls')">Image</a></td>
+        <td><a href="files/regpol_6_nballs_100.dat">data file</a></td>
+        <td><a href="files/regpol_6_nballs_100.mp">metapost</a></td>
+      </tr>
+    </table>
+    <h2>Heptagons</h2>
+    <table>
+      <tr>
+        <th>Number of balls</th>
+        <th>Radius</th>
+        <th>Solution</th>
+        <th colspan=2> Files </th>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td> 3.6667470932734703e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_7_nballs_10.svg', '10 balls')">Image</a></td>
+        <td><a href="files/regpol_7_nballs_10.dat">data file</a></td>
+        <td><a href="files/regpol_7_nballs_10.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>20</td>
+        <td> 2.5202311978156949e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_7_nballs_20.svg', '20 balls')">Image</a></td>
+        <td><a href="files/regpol_7_nballs_20.dat">data file</a></td>
+        <td><a href="files/regpol_7_nballs_20.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>30</td>
+        <td> 2.0398727902995242e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_7_nballs_30.svg', '30 balls')">Image</a></td>
+        <td><a href="files/regpol_7_nballs_30.dat">data file</a></td>
+        <td><a href="files/regpol_7_nballs_30.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>40</td>
+        <td> 1.7441006887658922e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_7_nballs_40.svg', '40 balls')">Image</a></td>
+        <td><a href="files/regpol_7_nballs_40.dat">data file</a></td>
+        <td><a href="files/regpol_7_nballs_40.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>50</td>
+        <td> 1.5431652613265504e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_7_nballs_50.svg', '50 balls')">Image</a></td>
+        <td><a href="files/regpol_7_nballs_50.dat">data file</a></td>
+        <td><a href="files/regpol_7_nballs_50.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>60</td>
+        <td> 1.4042351594973407e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_7_nballs_60.svg', '60 balls')">Image</a></td>
+        <td><a href="files/regpol_7_nballs_60.dat">data file</a></td>
+        <td><a href="files/regpol_7_nballs_60.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>70</td>
+        <td> 1.2945957057836413e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_7_nballs_70.svg', '70 balls')">Image</a></td>
+        <td><a href="files/regpol_7_nballs_70.dat">data file</a></td>
+        <td><a href="files/regpol_7_nballs_70.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>80</td>
+        <td> 1.2069316899027367e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_7_nballs_80.svg', '80 balls')">Image</a></td>
+        <td><a href="files/regpol_7_nballs_80.dat">data file</a></td>
+        <td><a href="files/regpol_7_nballs_80.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>90</td>
+        <td> 1.1389008079331175e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_7_nballs_90.svg', '90 balls')">Image</a></td>
+        <td><a href="files/regpol_7_nballs_90.dat">data file</a></td>
+        <td><a href="files/regpol_7_nballs_90.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>100</td>
+        <td> 1.0757351118594374e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_7_nballs_100.svg', '100 balls')">Image</a></td>
+        <td><a href="files/regpol_7_nballs_100.dat">data file</a></td>
+        <td><a href="files/regpol_7_nballs_100.mp">metapost</a></td>
+      </tr>
+    </table>
+    <h2>Octagons</h2>
+    <table>
+      <tr>
+        <th>Number of balls</th>
+        <th>Radius</th>
+        <th>Solution</th>
+        <th colspan=2> Files </th>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td> 3.7106873576400423e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_8_nballs_10.svg', '10 balls')">Image</a></td>
+        <td><a href="files/regpol_8_nballs_10.dat">data file</a></td>
+        <td><a href="files/regpol_8_nballs_10.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>20</td>
+        <td> 2.5546346856171898e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_8_nballs_20.svg', '20 balls')">Image</a></td>
+        <td><a href="files/regpol_8_nballs_20.dat">data file</a></td>
+        <td><a href="files/regpol_8_nballs_20.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>30</td>
+        <td> 2.0530034783740053e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_8_nballs_30.svg', '30 balls')">Image</a></td>
+        <td><a href="files/regpol_8_nballs_30.dat">data file</a></td>
+        <td><a href="files/regpol_8_nballs_30.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>40</td>
+        <td> 1.7814137271875297e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_8_nballs_40.svg', '40 balls')">Image</a></td>
+        <td><a href="files/regpol_8_nballs_40.dat">data file</a></td>
+        <td><a href="files/regpol_8_nballs_40.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>50</td>
+        <td> 1.5792422579503798e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_8_nballs_50.svg', '50 balls')">Image</a></td>
+        <td><a href="files/regpol_8_nballs_50.dat">data file</a></td>
+        <td><a href="files/regpol_8_nballs_50.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>60</td>
+        <td> 1.4244166201882108e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_8_nballs_60.svg', '60 balls')">Image</a></td>
+        <td><a href="files/regpol_8_nballs_60.dat">data file</a></td>
+        <td><a href="files/regpol_8_nballs_60.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>70</td>
+        <td> 1.3188785034950201e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_8_nballs_70.svg', '70 balls')">Image</a></td>
+        <td><a href="files/regpol_8_nballs_70.dat">data file</a></td>
+        <td><a href="files/regpol_8_nballs_70.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>80</td>
+        <td> 1.2351039494338467e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_8_nballs_80.svg', '80 balls')">Image</a></td>
+        <td><a href="files/regpol_8_nballs_80.dat">data file</a></td>
+        <td><a href="files/regpol_8_nballs_80.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>90</td>
+        <td> 1.1533310587096408e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_8_nballs_90.svg', '90 balls')">Image</a></td>
+        <td><a href="files/regpol_8_nballs_90.dat">data file</a></td>
+        <td><a href="files/regpol_8_nballs_90.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>100</td>
+        <td> 1.0934237300065705e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_8_nballs_100.svg', '100 balls')">Image</a></td>
+        <td><a href="files/regpol_8_nballs_100.dat">data file</a></td>
+        <td><a href="files/regpol_8_nballs_100.mp">metapost</a></td>
+      </tr>
+    </table>
+    <h2>Nonagons</h2>
+    <table>
+      <tr>
+        <th>Number of balls</th>
+        <th>Radius</th>
+        <th>Solution</th>
+        <th colspan=2> Files </th>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td> 3.8517662774680106e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_9_nballs_10.svg', '10 balls')">Image</a></td>
+        <td><a href="files/regpol_9_nballs_10.dat">data file</a></td>
+        <td><a href="files/regpol_9_nballs_10.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>20</td>
+        <td> 2.5917466356904295e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_9_nballs_20.svg', '20 balls')">Image</a></td>
+        <td><a href="files/regpol_9_nballs_20.dat">data file</a></td>
+        <td><a href="files/regpol_9_nballs_20.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>30</td>
+        <td> 2.1249735122267938e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_9_nballs_30.svg', '30 balls')">Image</a></td>
+        <td><a href="files/regpol_9_nballs_30.dat">data file</a></td>
+        <td><a href="files/regpol_9_nballs_30.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>40</td>
+        <td> 1.8061272327275071e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_9_nballs_40.svg', '40 balls')">Image</a></td>
+        <td><a href="files/regpol_9_nballs_40.dat">data file</a></td>
+        <td><a href="files/regpol_9_nballs_40.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>50</td>
+        <td> 1.5935302684466349e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_9_nballs_50.svg', '50 balls')">Image</a></td>
+        <td><a href="files/regpol_9_nballs_50.dat">data file</a></td>
+        <td><a href="files/regpol_9_nballs_50.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>60</td>
+        <td> 1.4433078321169282e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_9_nballs_60.svg', '60 balls')">Image</a></td>
+        <td><a href="files/regpol_9_nballs_60.dat">data file</a></td>
+        <td><a href="files/regpol_9_nballs_60.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>70</td>
+        <td> 1.3324203765110695e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_9_nballs_70.svg', '70 balls')">Image</a></td>
+        <td><a href="files/regpol_9_nballs_70.dat">data file</a></td>
+        <td><a href="files/regpol_9_nballs_70.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>80</td>
+        <td> 1.2448754289142935e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_9_nballs_80.svg', '80 balls')">Image</a></td>
+        <td><a href="files/regpol_9_nballs_80.dat">data file</a></td>
+        <td><a href="files/regpol_9_nballs_80.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>90</td>
+        <td> 1.1702222597908146e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_9_nballs_90.svg', '90 balls')">Image</a></td>
+        <td><a href="files/regpol_9_nballs_90.dat">data file</a></td>
+        <td><a href="files/regpol_9_nballs_90.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>100</td>
+        <td> 1.1061995497716709e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_9_nballs_100.svg', '100 balls')">Image</a></td>
+        <td><a href="files/regpol_9_nballs_100.dat">data file</a></td>
+        <td><a href="files/regpol_9_nballs_100.mp">metapost</a></td>
+      </tr>
+    </table>
+    <h2>Decagons</h2>
+    <table>
+      <tr>
+        <th>Number of balls</th>
+        <th>Radius</th>
+        <th>Solution</th>
+        <th colspan=2> Files </th>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td> 3.8158869903257292e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_10_nballs_10.svg', '10 balls')">Image</a></td>
+        <td><a href="files/regpol_10_nballs_10.dat">data file</a></td>
+        <td><a href="files/regpol_10_nballs_10.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>20</td>
+        <td> 2.6141939510741896e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_10_nballs_20.svg', '20 balls')">Image</a></td>
+        <td><a href="files/regpol_10_nballs_20.dat">data file</a></td>
+        <td><a href="files/regpol_10_nballs_20.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>30</td>
+        <td> 2.1418412263449060e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_10_nballs_30.svg', '30 balls')">Image</a></td>
+        <td><a href="files/regpol_10_nballs_30.dat">data file</a></td>
+        <td><a href="files/regpol_10_nballs_30.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>40</td>
+        <td> 1.8301088164790927e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_10_nballs_40.svg', '40 balls')">Image</a></td>
+        <td><a href="files/regpol_10_nballs_40.dat">data file</a></td>
+        <td><a href="files/regpol_10_nballs_40.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>50</td>
+        <td> 1.6181215355015219e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_10_nballs_50.svg', '50 balls')">Image</a></td>
+        <td><a href="files/regpol_10_nballs_50.dat">data file</a></td>
+        <td><a href="files/regpol_10_nballs_50.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>60</td>
+        <td> 1.4527298684061413e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_10_nballs_60.svg', '60 balls')">Image</a></td>
+        <td><a href="files/regpol_10_nballs_60.dat">data file</a></td>
+        <td><a href="files/regpol_10_nballs_60.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>70</td>
+        <td> 1.3400602611532583e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_10_nballs_70.svg', '70 balls')">Image</a></td>
+        <td><a href="files/regpol_10_nballs_70.dat">data file</a></td>
+        <td><a href="files/regpol_10_nballs_70.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>80</td>
+        <td> 1.2579127911106236e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_10_nballs_80.svg', '80 balls')">Image</a></td>
+        <td><a href="files/regpol_10_nballs_80.dat">data file</a></td>
+        <td><a href="files/regpol_10_nballs_80.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>90</td>
+        <td> 1.1786939677013490e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_10_nballs_90.svg', '90 balls')">Image</a></td>
+        <td><a href="files/regpol_10_nballs_90.dat">data file</a></td>
+        <td><a href="files/regpol_10_nballs_90.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>100</td>
+        <td> 1.1174493622481496e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_10_nballs_100.svg', '100 balls')">Image</a></td>
+        <td><a href="files/regpol_10_nballs_100.dat">data file</a></td>
+        <td><a href="files/regpol_10_nballs_100.mp">metapost</a></td>
+      </tr>
+    </table>
+    <h2>Hendecagons</h2>
+    <table>
+      <tr>
+        <th>Number of balls</th>
+        <th>Radius</th>
+        <th>Solution</th>
+        <th colspan=2> Files </th>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td> 3.8466135710223731e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_11_nballs_10.svg', '10 balls')">Image</a></td>
+        <td><a href="files/regpol_11_nballs_10.dat">data file</a></td>
+        <td><a href="files/regpol_11_nballs_10.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>20</td>
+        <td> 2.6267770819407193e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_11_nballs_20.svg', '20 balls')">Image</a></td>
+        <td><a href="files/regpol_11_nballs_20.dat">data file</a></td>
+        <td><a href="files/regpol_11_nballs_20.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>30</td>
+        <td> 2.1525089619409984e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_11_nballs_30.svg', '30 balls')">Image</a></td>
+        <td><a href="files/regpol_11_nballs_30.dat">data file</a></td>
+        <td><a href="files/regpol_11_nballs_30.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>40</td>
+        <td> 1.8417375804785402e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_11_nballs_40.svg', '40 balls')">Image</a></td>
+        <td><a href="files/regpol_11_nballs_40.dat">data file</a></td>
+        <td><a href="files/regpol_11_nballs_40.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>50</td>
+        <td> 1.6221972829501324e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_11_nballs_50.svg', '50 balls')">Image</a></td>
+        <td><a href="files/regpol_11_nballs_50.dat">data file</a></td>
+        <td><a href="files/regpol_11_nballs_50.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>60</td>
+        <td> 1.4631050090330716e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_11_nballs_60.svg', '60 balls')">Image</a></td>
+        <td><a href="files/regpol_11_nballs_60.dat">data file</a></td>
+        <td><a href="files/regpol_11_nballs_60.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>70</td>
+        <td> 1.3541646130407034e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_11_nballs_70.svg', '70 balls')">Image</a></td>
+        <td><a href="files/regpol_11_nballs_70.dat">data file</a></td>
+        <td><a href="files/regpol_11_nballs_70.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>80</td>
+        <td> 1.2639560586973519e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_11_nballs_80.svg', '80 balls')">Image</a></td>
+        <td><a href="files/regpol_11_nballs_80.dat">data file</a></td>
+        <td><a href="files/regpol_11_nballs_80.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>90</td>
+        <td> 1.1806673442929519e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_11_nballs_90.svg', '90 balls')">Image</a></td>
+        <td><a href="files/regpol_11_nballs_90.dat">data file</a></td>
+        <td><a href="files/regpol_11_nballs_90.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>100</td>
+        <td> 1.1218305516807402e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_11_nballs_100.svg', '100 balls')">Image</a></td>
+        <td><a href="files/regpol_11_nballs_100.dat">data file</a></td>
+        <td><a href="files/regpol_11_nballs_100.mp">metapost</a></td>
+      </tr>
+    </table>
+    <h2>Dodecagons</h2>
+    <table>
+      <tr>
+        <th>Number of balls</th>
+        <th>Radius</th>
+        <th>Solution</th>
+        <th colspan=2> Files </th>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td> 3.8552557785453406e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_12_nballs_10.svg', '10 balls')">Image</a></td>
+        <td><a href="files/regpol_12_nballs_10.dat">data file</a></td>
+        <td><a href="files/regpol_12_nballs_10.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>20</td>
+        <td> 2.6285798973659935e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_12_nballs_20.svg', '20 balls')">Image</a></td>
+        <td><a href="files/regpol_12_nballs_20.dat">data file</a></td>
+        <td><a href="files/regpol_12_nballs_20.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>30</td>
+        <td> 2.1689519268927326e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_12_nballs_30.svg', '30 balls')">Image</a></td>
+        <td><a href="files/regpol_12_nballs_30.dat">data file</a></td>
+        <td><a href="files/regpol_12_nballs_30.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>40</td>
+        <td> 1.8470301934600389e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_12_nballs_40.svg', '40 balls')">Image</a></td>
+        <td><a href="files/regpol_12_nballs_40.dat">data file</a></td>
+        <td><a href="files/regpol_12_nballs_40.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>50</td>
+        <td> 1.6314364327183928e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_12_nballs_50.svg', '50 balls')">Image</a></td>
+        <td><a href="files/regpol_12_nballs_50.dat">data file</a></td>
+        <td><a href="files/regpol_12_nballs_50.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>60</td>
+        <td> 1.4650053598350171e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_12_nballs_60.svg', '60 balls')">Image</a></td>
+        <td><a href="files/regpol_12_nballs_60.dat">data file</a></td>
+        <td><a href="files/regpol_12_nballs_60.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>70</td>
+        <td> 1.3580247823925282e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_12_nballs_70.svg', '70 balls')">Image</a></td>
+        <td><a href="files/regpol_12_nballs_70.dat">data file</a></td>
+        <td><a href="files/regpol_12_nballs_70.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>80</td>
+        <td> 1.2668344095932238e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_12_nballs_80.svg', '80 balls')">Image</a></td>
+        <td><a href="files/regpol_12_nballs_80.dat">data file</a></td>
+        <td><a href="files/regpol_12_nballs_80.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>90</td>
+        <td> 1.1880674384054297e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_12_nballs_90.svg', '90 balls')">Image</a></td>
+        <td><a href="files/regpol_12_nballs_90.dat">data file</a></td>
+        <td><a href="files/regpol_12_nballs_90.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>100</td>
+        <td> 1.1261677885702405e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_12_nballs_100.svg', '100 balls')">Image</a></td>
+        <td><a href="files/regpol_12_nballs_100.dat">data file</a></td>
+        <td><a href="files/regpol_12_nballs_100.mp">metapost</a></td>
+      </tr>
+    </table>
+    <script>
+      // Get the modal
+      var modal = document.getElementById("myModal");
+
+      function show_modal (img, caption) {
+	  var modalImg = document.getElementById("img01");
+
+	  // Get the image and insert it inside the modal - use its "alt" text as a caption
+	  // var img = document.getElementById("myImg");
+	  var captionText = document.getElementById("caption");
+	  
+	  modal.style.display = "block";
+	  modalImg.src = img;
+	  captionText.innerHTML = caption;
+      }
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() { 
+	  modal.style.display = "none";
+      }
+    </script>
+  </body>
+</html>

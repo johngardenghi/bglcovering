@@ -1,0 +1,30 @@
+ PROBLEM SUMMARY
+   problem .....: regpol    
+   nvert .......: 3
+   nballs ......: 1
+   itrial ......: 1
+   kappa .......: 0.87
+   sigma1 ......: 0.03
+   sigma2 ......: 0.15
+   pol area ....: 4.3301270189221930D-01
+   pol perimeter: 3.0000000000000000D+00
+
+ OPTIMIZATION SUMMARY
+   r ......:  5.7728014482643664D-01
+   csupn ..:  8.5173472164079556D-09
+   istop ..:  0
+   ierr ...:  0
+   itrial .:  1
+   #evalf .:  118
+   #evalg .:  300
+   #evalc .:  300
+   #evalj .:  300
+   #evalhl :  307
+   outiter :  21
+   totiter :  97
+   nwcalls :  21
+   nwtotit :  210
+   opt time:  0.01 seconds
+
+ BALLS (index, center abcissa, center ordinate)
+  1   5.0000000007580858D-01   2.8867513450739773D-01

@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html>
+  <style>
+    body {
+	color: #232323;
+	margin: 10px;
+	padding: 0;
+	text-align: justify;
+	font: normal 13px verdana,arial,'Bitstream Vera Sans',helvetica,sans-serif;
+    }
+
+    .topnav {
+	overflow: hidden;
+	background-color: #333;
+    }
+
+    .topnav a {
+	float: left;
+	display: block;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+    }
+
+    .topnav a:hover {
+	background-color: #ddd;
+	color: black;
+    }
+
+    .topnav a.active {
+	background-color: #04AA6D;
+	color: white;
+    }
+
+    .topnav .icon {
+	display: none;
+    }
+
+    @media screen and (max-width: 600px) {
+	.topnav a:not(:first-child) {display: none;}
+	.topnav a.icon {
+	    float: right;
+	    display: block;
+	}
+    }
+
+    @media screen and (max-width: 600px) {
+	.topnav.responsive {position: relative;}
+	.topnav.responsive .icon {
+	    position: absolute;
+	    right: 0;
+	    top: 0;
+	}
+	.topnav.responsive a {
+	    float: none;
+	    display: block;
+	    text-align: left;
+	}
+    }
+
+    table {
+	font-family: Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 40%;
+    }
+
+    table td, table th {
+	border: 1px solid #ddd;
+	padding: 8px;
+	white-space: nowrap;
+    }
+
+    table tr:nth-child(even){background-color: #f2f2f2;}
+
+    table tr:hover {background-color: #ddd;}
+
+    table th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: center;
+	background-color: #4169e1;
+	color: white;
+    }
+
+    /* The Modal (background) */
+    .modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	padding-top: 100px; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(255,255,255); /* Fallback color */
+	background-color: rgba(255,255,255,0.9); /* Black w/ opacity */
+    }
+
+    /* Modal Content (image) */
+    .modal-content {
+	margin: auto;
+	display: block;
+	width: 80%;
+	max-width: 700px;
+    }
+
+    /* Caption of Modal Image */
+    #caption {
+	margin: auto;
+	display: block;
+	width: 80%;
+	max-width: 700px;
+	text-align: center;
+	color: #4169e1;
+	padding: 10px 0;
+	height: 150px;
+    }
+
+    /* Add Animation */
+    .modal-content, #caption {  
+	-webkit-animation-name: zoom;
+	-webkit-animation-duration: 0.6s;
+	animation-name: zoom;
+	animation-duration: 0.6s;
+    }
+
+    @-webkit-keyframes zoom {
+	from {-webkit-transform:scale(0)} 
+	to {-webkit-transform:scale(1)}
+    }
+
+    @keyframes zoom {
+	from {transform:scale(0)} 
+	to {transform:scale(1)}
+    }
+
+    /* The Close Button */
+    .close {
+	position: absolute;
+	top: 15px;
+	right: 35px;
+	color: #000;
+	font-size: 40px;
+	font-weight: bold;
+	transition: 0.3s;
+    }
+
+    .close:hover,
+    .close:focus {
+	color: #bbb;
+	text-decoration: none;
+	cursor: pointer;
+    }
+
+    /* 100% Image Width on Smaller Screens */
+    @media only screen and (max-width: 700px){
+	.modal-content {
+	    width: 100%;
+	}
+    }
+  </style>
+
+  <body>
+    This page presents the numerical results and visual solutions found for the problems considered in the paper<br><br>
+    E. G. Birgin, J. L. Gardenghi, A. Laurain. "Asymptotic bounds on the optimal radius when covering a set with minimum radius identical balls", <i>submitted</i>.<br><br>
+
+    <!-- The Menu -->
+    <div class="topnav" id="myTopnav">
+      <a href="index.html">Unitary-side triangles and squares</a>
+      <a href="regpol.html">Regular polygons</a>
+      <a href="nonregpol.html">Nonregular polygons</a>
+    </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="img01">
+      <div id="caption"></div>
+    </div>
+    <h2>Triangles</h2>
+    <table>
+      <tr>
+        <th>Number of balls</th>
+        <th>Radius</th>
+        <th>Solution</th>
+        <th colspan=2> Files </th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td> 5.7728014482643664e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_1.svg', '1 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_1.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_1.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td> 4.9992987639360881e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_2.svg', '2 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_2.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_2.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td> 2.8864406195204334e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_3.svg', '3 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_3.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_3.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td> 2.6791742353719367e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_4.svg', '4 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_4.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_4.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td> 2.4996491336393992e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_5.svg', '5 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_5.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_5.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td> 1.9243347180679587e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_6.svg', '6 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_6.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_6.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td> 1.8523392101326627e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_7.svg', '7 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_7.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_7.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td> 1.7697442425117571e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_8.svg', '8 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_8.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_8.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td> 1.6664623405191181e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_9.svg', '9 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_9.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_9.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td> 1.4431462897881822e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_10.svg', '10 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_10.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_10.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td> 1.4104308215880029e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_11.svg', '11 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_11.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_11.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td> 1.3731166478172124e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_12.svg', '12 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_12.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_12.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td> 1.3265311352803258e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_13.svg', '13 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_13.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_13.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>14</td>
+        <td> 1.2750479263526443e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_14.svg', '14 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_14.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_14.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>15</td>
+        <td> 1.1545381860040191e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_15.svg', '15 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_15.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_15.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>16</td>
+        <td> 1.1370431556342817e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_16.svg', '16 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_16.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_16.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>17</td>
+        <td> 1.1138441494748627e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_17.svg', '17 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_17.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_17.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>18</td>
+        <td> 1.0910162787219083e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_18.svg', '18 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_18.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_18.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>19</td>
+        <td> 1.0616594168360408e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_19.svg', '19 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_19.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_19.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>20</td>
+        <td> 1.0321923972450020e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_20.svg', '20 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_20.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_20.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>21</td>
+        <td> 9.6212814858974552e-02</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_21.svg', '21 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_21.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_21.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>22</td>
+        <td> 9.5170835648002369e-02</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_22.svg', '22 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_22.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_22.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>23</td>
+        <td> 9.3768132325289633e-02</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_23.svg', '23 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_23.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_23.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>24</td>
+        <td> 9.2347701582024641e-02</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_24.svg', '24 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_24.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_24.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>25</td>
+        <td> 9.0612132682240470e-02</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_25.svg', '25 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_25.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_25.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>26</td>
+        <td> 8.8776956977501736e-02</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_26.svg', '26 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_26.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_26.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>27</td>
+        <td> 8.6881440615954403e-02</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_27.svg', '27 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_27.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_27.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>28</td>
+        <td> 8.2468971950206735e-02</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_28.svg', '28 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_28.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_28.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>29</td>
+        <td> 8.1796059402151206e-02</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_29.svg', '29 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_29.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_29.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>30</td>
+        <td> 8.0874493490187868e-02</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_30.svg', '30 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_30.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_30.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>31</td>
+        <td> 7.9888700852496664e-02</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_31.svg', '31 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_31.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_31.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>32</td>
+        <td> 7.8842076374437062e-02</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_32.svg', '32 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_32.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_32.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>33</td>
+        <td> 7.7628734882459180e-02</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_33.svg', '33 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_33.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_33.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>34</td>
+        <td> 7.6379443065078864e-02</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_34.svg', '34 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_34.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_34.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>35</td>
+        <td> 7.5152509871264095e-02</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_35.svg', '35 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_35.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_35.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>36</td>
+        <td> 7.2160914372902146e-02</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_3_nballs_36.svg', '36 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_3_nballs_36.dat">data file</a></td>
+        <td><a href="files/regpol_l1_3_nballs_36.mp">metapost</a></td>
+      </tr>
+    </table>
+    <h2>Squares</h2>
+    <table>
+      <tr>
+        <th>Number of balls</th>
+        <th>Radius</th>
+        <th>Solution</th>
+        <th colspan=2> Files </th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td> 7.0705680365481682e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_4_nballs_1.svg', '1 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_4_nballs_1.dat">data file</a></td>
+        <td><a href="files/regpol_l1_4_nballs_1.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td> 5.5898952126961243e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_4_nballs_2.svg', '2 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_4_nballs_2.dat">data file</a></td>
+        <td><a href="files/regpol_l1_4_nballs_2.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td> 5.0387369624857303e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_4_nballs_3.svg', '3 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_4_nballs_3.dat">data file</a></td>
+        <td><a href="files/regpol_l1_4_nballs_3.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td> 3.5353329686191587e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_4_nballs_4.svg', '4 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_4_nballs_4.dat">data file</a></td>
+        <td><a href="files/regpol_l1_4_nballs_4.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td> 3.2614088633108418e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_4_nballs_5.svg', '5 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_4_nballs_5.dat">data file</a></td>
+        <td><a href="files/regpol_l1_4_nballs_5.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td> 2.9871247032279852e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_4_nballs_6.svg', '6 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_4_nballs_6.dat">data file</a></td>
+        <td><a href="files/regpol_l1_4_nballs_6.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td> 2.7427893802558012e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_4_nballs_7.svg', '7 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_4_nballs_7.dat">data file</a></td>
+        <td><a href="files/regpol_l1_4_nballs_7.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td> 2.6028708335436745e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_4_nballs_8.svg', '8 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_4_nballs_8.dat">data file</a></td>
+        <td><a href="files/regpol_l1_4_nballs_8.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td> 2.3062509502733750e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_4_nballs_9.svg', '9 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_4_nballs_9.dat">data file</a></td>
+        <td><a href="files/regpol_l1_4_nballs_9.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td> 2.1822305684184828e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_4_nballs_10.svg', '10 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_4_nballs_10.dat">data file</a></td>
+        <td><a href="files/regpol_l1_4_nballs_10.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td> 2.1250524102792528e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_4_nballs_11.svg', '11 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_4_nballs_11.dat">data file</a></td>
+        <td><a href="files/regpol_l1_4_nballs_11.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td> 2.0226688675456159e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_4_nballs_12.svg', '12 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_4_nballs_12.dat">data file</a></td>
+        <td><a href="files/regpol_l1_4_nballs_12.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td> 1.9430260240069025e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_4_nballs_13.svg', '13 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_4_nballs_13.dat">data file</a></td>
+        <td><a href="files/regpol_l1_4_nballs_13.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>14</td>
+        <td> 1.8550211907688524e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_4_nballs_14.svg', '14 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_4_nballs_14.dat">data file</a></td>
+        <td><a href="files/regpol_l1_4_nballs_14.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>15</td>
+        <td> 1.7965356720178663e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_4_nballs_15.svg', '15 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_4_nballs_15.dat">data file</a></td>
+        <td><a href="files/regpol_l1_4_nballs_15.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>16</td>
+        <td> 1.6941985335374918e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_4_nballs_16.svg', '16 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_4_nballs_16.dat">data file</a></td>
+        <td><a href="files/regpol_l1_4_nballs_16.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>17</td>
+        <td> 1.6567362523154619e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_4_nballs_17.svg', '17 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_4_nballs_17.dat">data file</a></td>
+        <td><a href="files/regpol_l1_4_nballs_17.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>18</td>
+        <td> 1.6063260426309445e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_4_nballs_18.svg', '18 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_4_nballs_18.dat">data file</a></td>
+        <td><a href="files/regpol_l1_4_nballs_18.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>19</td>
+        <td> 1.5832020913168113e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_4_nballs_19.svg', '19 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_4_nballs_19.dat">data file</a></td>
+        <td><a href="files/regpol_l1_4_nballs_19.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>20</td>
+        <td> 1.5224076296974490e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_4_nballs_20.svg', '20 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_4_nballs_20.dat">data file</a></td>
+        <td><a href="files/regpol_l1_4_nballs_20.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>21</td>
+        <td> 1.4894773459164054e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_4_nballs_21.svg', '21 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_4_nballs_21.dat">data file</a></td>
+        <td><a href="files/regpol_l1_4_nballs_21.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>22</td>
+        <td> 1.4368311855635948e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_4_nballs_22.svg', '22 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_4_nballs_22.dat">data file</a></td>
+        <td><a href="files/regpol_l1_4_nballs_22.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>23</td>
+        <td> 1.4123870585145107e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_4_nballs_23.svg', '23 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_4_nballs_23.dat">data file</a></td>
+        <td><a href="files/regpol_l1_4_nballs_23.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>24</td>
+        <td> 1.3829318669484678e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_4_nballs_24.svg', '24 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_4_nballs_24.dat">data file</a></td>
+        <td><a href="files/regpol_l1_4_nballs_24.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>25</td>
+        <td> 1.3354000644700678e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_4_nballs_25.svg', '25 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_4_nballs_25.dat">data file</a></td>
+        <td><a href="files/regpol_l1_4_nballs_25.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>26</td>
+        <td> 1.3175601283642202e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_4_nballs_26.svg', '26 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_4_nballs_26.dat">data file</a></td>
+        <td><a href="files/regpol_l1_4_nballs_26.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>27</td>
+        <td> 1.2862475532734835e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_4_nballs_27.svg', '27 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_4_nballs_27.dat">data file</a></td>
+        <td><a href="files/regpol_l1_4_nballs_27.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>28</td>
+        <td> 1.2757176879318896e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_4_nballs_28.svg', '28 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_4_nballs_28.dat">data file</a></td>
+        <td><a href="files/regpol_l1_4_nballs_28.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>29</td>
+        <td> 1.2594655595223636e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_4_nballs_29.svg', '29 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_4_nballs_29.dat">data file</a></td>
+        <td><a href="files/regpol_l1_4_nballs_29.mp">metapost</a></td>
+      </tr>
+      <tr>
+        <td>30</td>
+        <td> 1.2202931661410486e-01</td>
+        <td><a href="#" onClick="show_modal('images/regpol_l1_4_nballs_30.svg', '30 balls')">Image</a></td>
+        <td><a href="files/regpol_l1_4_nballs_30.dat">data file</a></td>
+        <td><a href="files/regpol_l1_4_nballs_30.mp">metapost</a></td>
+      </tr>
+    </table>
+    <script>
+      // Get the modal
+      var modal = document.getElementById("myModal");
+
+      function show_modal (img, caption) {
+	  var modalImg = document.getElementById("img01");
+
+	  // Get the image and insert it inside the modal - use its "alt" text as a caption
+	  // var img = document.getElementById("myImg");
+	  var captionText = document.getElementById("caption");
+	  
+	  modal.style.display = "block";
+	  modalImg.src = img;
+	  captionText.innerHTML = caption;
+      }
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() { 
+	  modal.style.display = "none";
+      }
+    </script>
+  </body>
+</html>
