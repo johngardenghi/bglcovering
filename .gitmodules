@@ -1,0 +1,3 @@
+[submodule "bglcovering_implementation"]
+	path = bglcovering_implementation
+	url = git@github.com:johngardenghi/bglcovering_implementation.git
